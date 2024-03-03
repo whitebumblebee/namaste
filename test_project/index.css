@@ -1,0 +1,35 @@
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Dancing Script', cursive; 
+    display: flex; /* Use flexbox for layout */
+    min-height: 100vh; /* Ensure elements cover full viewport height */
+    background-color: #ddd; /* Optional background for non-toggled areas */
+}
+
+.container { 
+    /* No changes needed here */
+    display: flex;
+    width: 100%; /* Container takes full width */
+    height: 100vh; /* Container takes full viewport height */
+}
+
+.yin, .yang {
+    flex: 1; /* Elements equally share the full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 7em; 
+    cursor: pointer;
+}
+
+.yin {
+    background-color: black;
+    color: white;
+}
+
+.yang {
+    background-color: white;
+    color: black;
+}
