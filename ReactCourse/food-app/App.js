@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import restaurants from './foods.js'
 
 const Header = () => {
     return (
@@ -19,21 +20,32 @@ const Header = () => {
     )
 }
 
-const RestaurantCard = () => {
+const RestaurantCard = (props) => {
+    const { resData } = props;
+    const {name, cuisines, avgRating, sla} = resData.info;
+    const imageLink = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resData.info.cloudinaryImageId}`
     return (
         <div className="res-card" style={{ backgroundColor: "#f0f0f0"}}>
-            <h3>Biryani Mahal</h3>
-            {/* <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/df90812f3a4d443f27d49def4dc2150d"></img> */}
+            <img className="res-logo" alt="res-logo" src={imageLink}></img>
+            <h4 className="res-name">{name} </h4>
+            <h5 className="res-cuisines">{cuisines.slice(0,3).join()}</h5>
+            <h5 className="res-rating">{avgRating}</h5>
+            <h5 className="res-rating">{sla.slaString}</h5>
         </div>
     )
 }
 
 const Body = () => {
+    console.log(restaurants)
     return (
         <div className="body">
             <div className="search">Search</div>
             <div className="res-container">
-                <RestaurantCard />
+                {
+                    restaurants.map(res => {
+                    return <RestaurantCard key={res.info.id} resData={res} />
+                })
+                }
             </div>
         </div>
     )
