@@ -8,23 +8,27 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText , setSearchText] = useState("");
-    const fetchData = async () => {
-        const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6428965&lng=77.283256&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
     
-        const res = await data.json();
-        const finalData = await res?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants;
-        setListOfRestaurants(finalData);
-        setFilteredRestaurants(finalData);
-    }
 
     useEffect(() => {
         fetchData();
     }, []);
 
+    const fetchData = async () => {
+        // `https://api.allorigins.win/get?url=${encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6428965&lng=77.283256&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')}`
+        const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6428965&lng=77.283256&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+    
+        const res = await data.json();
+        const finalData = res?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log("final data");
+        console.log(finalData)
+        setListOfRestaurants(finalData);
+        setFilteredRestaurants(finalData);
+    }
+
     return listOfRestaurants.length === 0 ? (
         <Shimmer />
-    ):
-    (
+    ) : (
         <div className="body">
             <div className="filter">
                 <div className='search'>
@@ -37,7 +41,7 @@ const Body = () => {
                     }}/>
                     <button
                     onClick={() => {
-                        const filterR = filteredRestaurants.filter(res =>
+                        const filterR = listOfRestaurants.filter(res =>
                             res?.info?.name?.toLowerCase().includes(searchText.toLowerCase()));
                         setListOfRestaurants(filterR)
                     }}>
