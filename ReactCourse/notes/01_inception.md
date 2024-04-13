@@ -1,11 +1,15 @@
 # Episode 1 - Inception
 
+## Main topics covered:
 - basics of react
+- What makes React fast and suitable to build scalable frontend apps?
 - asked what is CDN?(Research on what is react)
 - what is `crossorigin` while using react as cdn
 
-## Part - 01
-- We learnt about basics of html and revised how javascript injects html inside html using its dom api. Following is one example where we are rendering a header using javascript
+## Part - 01(Small Recap of HTML and DOM API)
+- How does HTML work? and how javascript injects html inside html using its dom api? 
+- When working with HTML in VS code use extensions like emmet for code generation which comes by default with vs code
+- Following is one example where we are rendering a header using javascript:
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -25,10 +29,12 @@
 </body>
 </html>
 ```
+- Basically we can just add the script tag and add javascript to add interactivity or manipulate DOM with javascript.
+- Read more about DOM api [here](https://javascript.info/document)
 
 ## Part 02 - Basics of React and rendering React using CDN
-- In this we discussed basics of React. What React and ReactDOM are at a very very high level
-- then we saw how we could render the same header using the React and ReactDOM api as shown below:
+- What React and ReactDOM are at a very very high level?
+- First let's see how we would render same header using React, using with CDN:
 ```html
 <!DOCTYPE html>
 <html lang="en">
